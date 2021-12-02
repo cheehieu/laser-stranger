@@ -10,7 +10,7 @@ Check out [this video clip](https://youtu.be/jIQ9z2bxXyg?t=145) for a reference 
 
 Many other makers have already built versions of this Stranger Things wall with some neat and creative features (e.g. [SparkFun's live Twitter wall](https://youtu.be/ZkAxEGFXsic)), but none of them really looked very accurate to the show... I wanted my replica to mimic the creepy aesthetic and be used as a "wall" art piece, so I incorporated a laser to engrave the exact paint strokes. 
 
-The finished product was given as a "Get well soon!" gift to my friend, Regina. It featured addressable LEDs, a battery-powered Bluetooth microcontroller, and could be controlled by a companion mobile application to display messages. 
+The finished product was given as a gift to my friend, Regina. It featured addressable LEDs, a battery-powered Bluetooth microcontroller, and could be controlled by a companion mobile application to display messages. 
 
 
 # Supplies
@@ -33,6 +33,7 @@ The finished product was given as a "Get well soon!" gift to my friend, Regina. 
 - Epilog Mini 24 60W Laser (courtesy of Harris County Public Library)
 - Soldering iron with hot air rework station
 - Solder wire and solder paste
+- Tweezers
 - Electric skillet
 - Wire stripper/cutter
 - Hot glue gun
@@ -75,49 +76,95 @@ Fill in the engraved letters with black paint. Be careful not to drip any extra 
 
 
 ## Christmas Lights
-### Step 1: 
-### Step 2: 
-### Step 3: 
-- design breakout boards (Altium, OSH Park fabrication)
-- solder LEDs onto breakout boards (stencil, electric skillet)
-- measure length between letters and cut wires (VCC, GND, DATA)
-- plan wire connections on the backside of frame (connectors)
-- solder wires onto breakout boards
-- test light strips are functional
-- add heat shrink
-- cut off Christmas light bulbs
-- hot glue bulbs to breakout boards
+### Step 1: Select LEDs and Design Breakout Boards
+In order to illuminate one light bulb at a time, the light strand needs to use addressable LEDs. I found small C3-sized Christmas lights on Amazon, but they were not addressable... so I decided to retrofit the bulbs with small NeoPixel RGB LEDs. These LEDs are addressable and very popular among electronics hobbyists. Each LED would need to be daisy-chained with 3 wires to provide 3V, ground, and a data signal. Knowing this, I designed small breakout printed circuit boards that could support the C3 bulb and connect each LED to the daisy-chain with wires. The breakout board PCB was designed in Altium and fabricated by OSH Park.
+
+![oshpark_top](https://user-images.githubusercontent.com/1174029/144363480-a4315248-3df3-442f-9236-60ed5d836052.png) ![oshpark_bottom](https://user-images.githubusercontent.com/1174029/144363478-235aaebc-cd5a-4edf-88a9-6e7d3e483fe0.png)
+![breakout_boards](https://user-images.githubusercontent.com/1174029/144363537-aa680d75-93f9-496d-a9a8-fccf468c5e57.JPG)
+
+### Step 2: Assemble Breakout Boards
+These LEDs and breakout boards are quite small. Instead of soldering the heat-sensitive parts by hand, I decided to use solder paste and an electric skillet (the poor man's reflow oven). I found it helpful to use a microscope and stencil to apply the paste to the pads, then use tweezers to carefully place the LED. I didn't bother with soldering the decoupling capacitor to allow more space for mounting the light bulb.
+
+![breakout_board](https://user-images.githubusercontent.com/1174029/144365111-db85b88e-0379-465f-bb17-ed6cef285b37.JPG) ![breakout_stencil](https://user-images.githubusercontent.com/1174029/144365177-1bcdf8dd-55a5-400d-88b7-8fbf2f947bca.JPG)
+![breakout_solder_paste](https://user-images.githubusercontent.com/1174029/144365174-aa02af1c-7593-46cb-ad16-deb7dc90debe.JPG) ![breakout_led_placement](https://user-images.githubusercontent.com/1174029/144365162-a9ee8354-3b9b-4c4a-ba5a-a6c97576a11b.JPG)
+
+Repeate this process at least 26 times...
+
+![breakout_solder_paste_repeat](https://user-images.githubusercontent.com/1174029/144365170-f315eb2d-36ce-40e5-8585-8d903ceb7f1e.JPG)
+
+After all the boards are populated, place them on the electric skillet. Cover and turn up the heat. Try to follow the reflow profile for the LEDs, but ultimately keep an eye on the solder paste and watch when it gets hot enough to make a solid joint. I like using low-temp solder paste for this.
+
+![breakout_skillet](https://user-images.githubusercontent.com/1174029/144365165-8e818b87-efb7-4901-8de0-61ff2de42c04.JPG)
+![breakout_assembled](https://user-images.githubusercontent.com/1174029/144365157-9f174783-e5ce-4cfd-8a9e-fcc327bdf2c4.JPG)
+
+
+### Step 3: Wire Up
+The next step is to add wires to connect each LED breakout board together. These addressable LEDs work in a daisy-chain configuration with 3 input signals (VDD, GND, DIN) and 3 output signals (VDD, GND, DOUT). To keep track of the signals, I color-coded the wires using the standard convention of VDD=red, GND=black, DATA=white. I selected solid core 22 AWG gauge wire because it is easy to solder to through-hole pads and the wire itself holds its shape when bent.
+
+
+
+Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Chrismas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to make effective extension cables with removable connections.
+
+
+
+I also added heat shrink tubing between each LED to make it look like a single black cable, matching how Christmas lights normally look. After soldering the wires to the breakout boards, use hot air to activate the heat shrink tubing.
+
+
+
+### Step 4: Mount Christmas Light Bulbs
+As you are adding new LEDs to the daisy-chain, it is good practice to test that the LEDs are functional and in the correct position. An easy way to check this is by connecting the strand to an Arduino and using Adafruit's NeoPixel library strandtest example to illuminate the LEDs. Once all of the LEDs have been verified to work, you are ready to mount the Christmas light bulbs to the breakout boards.
+
+The C3 Christmas lights that I bought didn't have easily removable plastic bulbs. I couldn't simply unscrew or pry them off. I had to use a cutter to carefully cut them off, exposing a large enough hole at the bulb base for the LED to shine through. Once 26 bulbs were removed, I arranged them in a color order to avoid any same-color neighbors. Using a hot glue gun, add a dab of hot glue on top of the LED and quickly apply the plastic bulb to the breakout board. Hold together for a few seconds for the surfaces to bond. The hot glue acts as an adhesive, but also works to diffuse light inside the bulb. Repeat this glueing process for all remaining LEDs, also using super glue if a stronger bond is needed. Pay attention to the orientation of each bulb, as some need to point at different angles.
+
+
+
+After mounting the bulbs, test the light strand again to see how the bulbs become illuminated.
+
+
 
 ## Software
-### Step 1: 
-### Step 2: 
-### Step 3: 
+The control software consists of microcontroller firmware to drive the LEDs and respond to Bluetooth commands from a mobile application. I used custom-built electronics from a previous project because it already contained the necessary components to power several LEDs from a Lithium-polymer battery. This board used a Nordic nRF52832 BLE System-on-Chip, which could easily connect to any Android or Apple smartphone device with Bluetooth capabilities. 
+
+### Step 1: Alphabet-LED Protocol Firmware
+
+
+### Step 2: User Interface
+
+
+### Step 3: Easter Eggs
 - mobile app user interface to press letter, type message (React Native since I use Android and recipient uses iPhone)
 - BLE protocol for illuminating LEDs, ASCII alphabet
 - adjustable time delays, LED brightness and color
 - easter eggs
 
+
 ## Final Assembly
-- super glue LED strips to plywood, match up with letters
-- insert into frame
-- connect wires and male/female extension plugs
-- connect to microcontroller board
-- connect to mobile app
-- video demo (youtube)
-### Step 1: 
-### Step 2: 
-### Step 3: 
+### Step 1: Glue Christmas Lights
+Position the Christmas lights strands against the wallpaper plywood to align with the letters and match the configuration of the real Stranger Things wall. Use super glue for a more secure and permanent bond.
+
+### Step 2: Insert Into Frame
+Fold the wires around to the backside of the plywood and insert the piece into the frame. Secure with the frame tabs and clear room for any wall-mounting hardware.
+
+### Step 3: Connect Electronics
+Connect the light strands together with the extension cables and plug it into the electronics board. Connect the battery or power the board via USB cable.
+
+### Step 4: Send a Message
+Connect to the mobile app and start sending messages.
+- video demo (https://youtu.be/60Hty-S8RYM)
+- hello world (https://youtu.be/1JN2lHtpktk)
+- run (https://youtu.be/DlZCyXovSxo)
+- david sux ()
 
 
 # Gifting
-- motivation as a gift for Regina
-- references to Eleven (shaved head, speak slowly, communicate), using old EllieGrid electronics, a gift that only I could give
-- video of unboxing
+The primary motivation for this project was to be a gift for my friend and coworker, Regina. A few months prior, she had a hemorrhagic stroke that required multiple brain surgeries. She experienced paralysis on the right side of her body and had some difficulty speaking. We were both fans of the Stranger Things show and agreed that she resembled one of the characters with her shaved head and slow speech (Eleven).
+
+- using old EllieGrid electronics, a gift that only I could give
+- video of unboxing (https://youtu.be/BQxKGPLLM7Q)
 - pictures from hospital and now (2 years later)
 - laser etch anodized aluminum (video)
 
 
 # Resources
 - https://www.instructables.com/contest/laser2021/
-- Epilog laser manual settings
 - 
