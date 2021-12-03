@@ -66,6 +66,7 @@ Make sure to test your laser engraving settings on a piece of scrap plywood firs
 
 Unfortunately, I did not have the foresight to record a video of the laser engraving.
 
+![laser](https://user-images.githubusercontent.com/1174029/144571166-d778d2d4-8883-4915-b52a-b783ca9c6e78.jpg)
 ![wallpaper_engrave](https://user-images.githubusercontent.com/1174029/144360150-4fc4c89c-ab6e-4679-9abf-62990722078a.JPG)
 
 ### Step 4: Paint the Letters
@@ -101,25 +102,35 @@ After all the boards are populated, place them on the electric skillet. Cover an
 ### Step 3: Wire Up
 The next step is to add wires to connect each LED breakout board together. These addressable LEDs work in a daisy-chain configuration with 3 input signals (VDD, GND, DIN) and 3 output signals (VDD, GND, DOUT). To keep track of the signals, I color-coded the wires using the standard convention of VDD=red, GND=black, DATA=white. I selected solid core 22 AWG gauge wire because it is easy to solder to through-hole pads and the wire itself holds its shape when bent.
 
+![wire_measure](https://user-images.githubusercontent.com/1174029/144547162-ae63bbd9-e4f6-49f3-b6bf-f464ae1a3ccb.JPG)
 
+Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Chrismas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to effectively make extension cables.
 
-Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Chrismas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to make effective extension cables with removable connections.
-
-
+![wire_led_top_](https://user-images.githubusercontent.com/1174029/144566073-920d9c65-9f9f-4f60-8878-3ee49b681949.jpg)
+![wire_led_bottom_](https://user-images.githubusercontent.com/1174029/144566070-b8e0c170-fb4d-4248-894c-240b3f88cb32.jpg)
+![wire_header](https://user-images.githubusercontent.com/1174029/144566305-a49f3b41-20ea-4314-8d09-04b4248ed329.jpg)
 
 I also added heat shrink tubing between each LED to make it look like a single black cable, matching how Christmas lights normally look. After soldering the wires to the breakout boards, use hot air to activate the heat shrink tubing.
 
+![wire_heat_shrink](https://user-images.githubusercontent.com/1174029/144547192-6e8ee3f6-a3e0-4eb3-a80e-f9c7d2a58366.JPG)
 
 
 ### Step 4: Mount Christmas Light Bulbs
 As you are adding new LEDs to the daisy-chain, it is good practice to test that the LEDs are functional and in the correct position. An easy way to check this is by connecting the strand to an Arduino and using Adafruit's NeoPixel library strandtest example to illuminate the LEDs. Once all of the LEDs have been verified to work, you are ready to mount the Christmas light bulbs to the breakout boards.
 
-The C3 Christmas lights that I bought didn't have easily removable plastic bulbs. I couldn't simply unscrew or pry them off. I had to use a cutter to carefully cut them off, exposing a large enough hole at the bulb base for the LED to shine through. Once 26 bulbs were removed, I arranged them in a color order to avoid any same-color neighbors. Using a hot glue gun, add a dab of hot glue on top of the LED and quickly apply the plastic bulb to the breakout board. Hold together for a few seconds for the surfaces to bond. The hot glue acts as an adhesive, but also works to diffuse light inside the bulb. Repeat this glueing process for all remaining LEDs, also using super glue if a stronger bond is needed. Pay attention to the orientation of each bulb, as some need to point at different angles.
+![wire_measure_lights](https://user-images.githubusercontent.com/1174029/144547441-e8a8ee6f-bc4c-4261-acbf-736b13f2a920.JPG)
+![wire_test_lights](https://user-images.githubusercontent.com/1174029/144547445-4c6afa35-6ec0-4671-a944-afa52aea63f4.JPG)
 
+The C3 Christmas lights that I bought didn't have easily removable plastic bulbs. I needed to pry them off and use a cutter to carefully expose a large enough hole at the bulb base for the LED to shine through. Without cutting the plastic base, the LED would not properly diffuse light inside the bulb; it needed to be flush to maximize light throw. Once 26 bulbs were removed, I arranged them in a color order to avoid any same-color neighbors. Using a hot glue gun, add a dab of hot glue on top of the LED and quickly apply the plastic bulb to the breakout board. Hold together for a few seconds for the surfaces to bond. The hot glue acts as an adhesive, but also works to diffuse light inside the bulb. Repeat this glueing process for all remaining LEDs, also using super glue if a stronger bond is needed. Pay attention to the orientation of each bulb, as some need to point at different angles.
 
+![bulb_remove](https://user-images.githubusercontent.com/1174029/144566530-f1fa36bd-8374-4ae7-8e15-33a8ebb8dba1.jpg)
+![bulb_extract](https://user-images.githubusercontent.com/1174029/144566529-936ec566-9f09-4bc6-acf0-78c88d298035.jpg)
+![wire_glue_bulbs](https://user-images.githubusercontent.com/1174029/144547438-5718d957-8050-4190-9397-c5f66aeda50e.JPG)
+![wire_measure_bulbs](https://user-images.githubusercontent.com/1174029/144547439-8bd377bc-e796-4e76-8418-f0fc825b8845.JPG)
 
-After mounting the bulbs, test the light strand again to see how the bulbs become illuminated.
+After mounting the bulbs, test the light strand again to see how the bulbs look when illuminated.
 
+![wire_test_bulbs](https://user-images.githubusercontent.com/1174029/144547443-7a2f0b39-fe1b-4538-9838-91a9135eb5aa.JPG)
 
 
 ## Software
@@ -127,9 +138,47 @@ The control software consists of microcontroller firmware to drive the LEDs and 
 
 ### Step 1: Alphabet-LED Protocol Firmware
 
+#### LEDs
+|  # | Character | ASCII Dec | ASCII Hex | ASCII Dec | ASCII Hex |
+|:--:|:---------:|:---------:|:---------:|:---------:|:---------:|
+|  - |   Space   |     32    |    0x20   |     --    |     --    |
+|  0 |    A, a   |     65    |    0x41   |     97    |    0x61   |
+|  1 |    B, b   |     66    |    0x42   |     98    |    0x62   |
+|  2 |    C, c   |     67    |    0x43   |     99    |    0x63   |
+|  3 |    D, d   |     68    |    0x44   |    100    |    0x64   |
+|  4 |    E, e   |     69    |    0x45   |    101    |    0x65   |
+|  5 |    F, f   |     70    |    0x46   |    102    |    0x66   |
+|  6 |    G, g   |     71    |    0x47   |    103    |    0x67   |
+|  7 |    H, h   |     72    |    0x48   |    104    |    0x68   |
+|  8 |    I, i   |     73    |    0x49   |    105    |    0x69   |
+|  9 |    J, j   |     74    |    0x4A   |    106    |    0x6A   |
+| 10 |    K, k   |     75    |    0x4B   |    107    |    0x6B   |
+| 11 |    L, l   |     76    |    0x4C   |    108    |    0x6C   |
+| 12 |    M, m   |     77    |    0x4D   |    109    |    0x6D   |
+| 13 |    N, n   |     78    |    0x4E   |    110    |    0x6E   |
+| 14 |    O, o   |     79    |    0x4F   |    111    |    0x6F   |
+| 15 |    P, p   |     80    |    0x50   |    112    |    0x70   |
+| 16 |    Q, q   |     81    |    0x51   |    113    |    0x71   |
+| 17 |    R, r   |     82    |    0x52   |    114    |    0x72   |
+| 18 |    S, s   |     83    |    0x53   |    115    |    0x73   |
+| 19 |    T, t   |     84    |    0x54   |    116    |    0x74   |
+| 20 |    U, u   |     85    |    0x55   |    117    |    0x75   |
+| 21 |    V, v   |     86    |    0x56   |    118    |    0x76   |
+| 22 |    W, w   |     87    |    0x57   |    119    |    0x77   |
+| 23 |    X, x   |     88    |    0x58   |    120    |    0x78   |
+| 24 |    Y, y   |     89    |    0x59   |    121    |    0x79   |
+| 25 |    Z, z   |     90    |    0x5A   |    122    |    0x80   |
+
+#### Parameters
+- LED number (0-25, uint8_t)
+- LED color (RGB, uint8_t x 3) [led_r, led_g, led_b]
+- Sequence LED on duration [char_duration] (ms, uint16_t)
+- Sequence LED off duration [inter_char_duration] (ms, uint16_t)
+- 'Space' character duration [space_duration] (ms, uint16_t)
 
 ### Step 2: User Interface
-
+I apologize for the user interface design... I didn't spend much time on it so it is purely functional (not pretty). The app has four main sections that are accessible via the bottom tabs. _Wall_ lets you interact with the alphabet lights in real-time; pressing a letter in the app will illuminate the corresponding letter in the frame. _Message_ lets you input a text string to display letter-by-letter like in the show. The function iterates over the character array and activates the corresponding LED in sequence. By default, the light-on character duration is 1000ms, the light-off time between characters is 250ms, and the light-off time between words is 1000ms. _Light Patterns_ contains some easter eggs to recreate the messages from the show ("right here", "run") and some other fun things like a Magic 8 Ball. _Settings_ gives you full control to monitor the battery level and adjust the time and LED color/brightness settings. Using max brightness white is easiest because the light bulbs are already colored.
+- [App Demo with Test Lights](https://youtu.be/60Hty-S8RYM)
 
 ### Step 3: Easter Eggs
 - mobile app user interface to press letter, type message (React Native since I use Android and recipient uses iPhone)
@@ -138,22 +187,28 @@ The control software consists of microcontroller firmware to drive the LEDs and 
 - easter eggs
 
 
+
 ## Final Assembly
 ### Step 1: Glue Christmas Lights
 Position the Christmas lights strands against the wallpaper plywood to align with the letters and match the configuration of the real Stranger Things wall. Use super glue for a more secure and permanent bond.
 
+![assembly_glue](https://user-images.githubusercontent.com/1174029/144567320-39fe976a-a276-41ac-8043-37e3532b1237.JPG)
+
 ### Step 2: Insert Into Frame
 Fold the wires around to the backside of the plywood and insert the piece into the frame. Secure with the frame tabs and clear room for any wall-mounting hardware.
+
+![assembled_lights_off](https://user-images.githubusercontent.com/1174029/144567691-84be48a6-fddf-45f1-9fe3-4731ded8443b.JPG)
 
 ### Step 3: Connect Electronics
 Connect the light strands together with the extension cables and plug it into the electronics board. Connect the battery or power the board via USB cable.
 
+![assembled_back](https://user-images.githubusercontent.com/1174029/144567552-d4403e16-796e-43f7-94dd-b6bf2150a153.JPG)
+
 ### Step 4: Send a Message
-Connect to the mobile app and start sending messages.
-- video demo (https://youtu.be/60Hty-S8RYM)
-- hello world (https://youtu.be/1JN2lHtpktk)
-- run (https://youtu.be/DlZCyXovSxo)
-- david sux ()
+Launch the mobile app and establish a Bluetooth connection. 
+- ["hello world"](https://youtu.be/1JN2lHtpktk)
+- ["RUN"](https://youtu.be/DlZCyXovSxo)
+- ["David"](https://youtu.be/lXHU-I2KuCw)
 
 
 # Gifting
@@ -162,9 +217,12 @@ The primary motivation for this project was to be a gift for my friend and cowor
 - using old EllieGrid electronics, a gift that only I could give
 - video of unboxing (https://youtu.be/BQxKGPLLM7Q)
 - pictures from hospital and now (2 years later)
-- laser etch anodized aluminum (video)
+- laser etch anodized aluminum (https://youtu.be/YgBGavpdD-0)
 
 
 # Resources
+- https://blog.hackster.io/get-ready-for-season-2-of-stranger-things-with-your-own-alphabet-wall-242b6fe39044
+- https://github.com/sparkfun/Stranger_Things_Wall
+- https://www.instructables.com/id/Stranger-Things-Interactive-Wall-Art/
 - https://www.instructables.com/contest/laser2021/
 - 
