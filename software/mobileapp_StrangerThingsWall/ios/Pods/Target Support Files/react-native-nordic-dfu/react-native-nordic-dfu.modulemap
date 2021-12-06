@@ -1,0 +1,6 @@
+framework module react_native_nordic_dfu {
+  umbrella header "react-native-nordic-dfu-umbrella.h"
+
+  export *
+  module * { export * }
+}

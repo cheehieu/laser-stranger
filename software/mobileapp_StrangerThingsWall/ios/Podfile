@@ -1,0 +1,46 @@
+platform :ios, "9.0"
+
+# External dependencies contain Swift, important to add this line
+use_frameworks!
+
+target 'StrangerThingsWall' do
+
+  # Standard React Native dependencies when using CocoaPods
+  pod "yoga", path: "../node_modules/react-native/ReactCommon/yoga"
+  pod "DoubleConversion", podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  pod "glog", podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  pod "Folly", podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
+
+  pod "React", path: "../node_modules/react-native", subspecs: [
+        "Core",
+        "CxxBridge",
+        "DevSupport",
+        'RCTAnimation',
+        'RCTActionSheet',
+        'RCTBlob',
+        'RCTGeolocation',
+        'RCTImage',
+        'RCTLinkingIOS',
+        'RCTNetwork',
+        'RCTSettings',
+        'RCTText',
+        'RCTVibration',
+        'RCTWebSocket'
+      ]
+
+  pod "RNVectorIcons", path: "../node_modules/react-native-vector-icons"
+  pod "ReactNativeNavigation", path: "../node_modules/react-native-navigation"
+  pod "react-native-ble-manager", path: "../node_modules/react-native-ble-manager"
+  pod "rn-fetch-blob", path: "../node_modules/rn-fetch-blob"
+  pod "react-native-nordic-dfu", path: "../node_modules/react-native-nordic-dfu"
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
+end
+
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '5'
+      end
+    end
+end
