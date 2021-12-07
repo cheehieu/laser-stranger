@@ -1,12 +1,12 @@
 # laser-stranger
-<img alt="framed_one_light_on" src="https://user-images.githubusercontent.com/1174029/144354003-ca20dbc3-cf82-4640-ae4c-c142b6783144.JPG" width="1000">
+<img alt="framed_one_light_on" src="https://user-images.githubusercontent.com/1174029/144354003-ca20dbc3-cf82-4640-ae4c-c142b6783144.JPG" width="900">
 
 # Introduction
 For this project, I wanted to build a miniature replica of the Christmas lights wall from _Stranger Things_. If you haven't seen the first season of Stranger Things yet, do yourself a favor and add it to your watch queue ASAP! It's pretty great. 
 
 Check out [this video clip](https://youtu.be/jIQ9z2bxXyg?t=145) for a reference to the wall. Winona Ryder's character essentially uses black paint and a strand of Christmas lights to create an alphabet Ouija board on her living room wall—in order to communicate with her son who is trapped in another dimension. Her son is able to spell out messages by illuminating the corresponding light bulbs, letter-by-letter.
 
-<img alt="wall_from_show_poster" src="https://user-images.githubusercontent.com/1174029/144354030-8ee90029-8864-4493-968d-61834825d295.jpg" width="1000">
+<img alt="wall_from_show_poster" src="https://user-images.githubusercontent.com/1174029/144354030-8ee90029-8864-4493-968d-61834825d295.jpg" width="900">
 
 Many other makers have already built versions of this Stranger Things wall with some neat and creative features (e.g. [SparkFun's live Twitter wall](https://youtu.be/ZkAxEGFXsic)), but none of them really looked very accurate to the show... I wanted my replica to mimic the creepy aesthetic and be used as a "wall" art piece, so I incorporated a laser to engrave the exact paint strokes. 
 
@@ -14,7 +14,7 @@ The finished product was given as a gift to my friend, Regina. It featured addre
 
 
 # Supplies
-<img alt="supplies" src="https://user-images.githubusercontent.com/1174029/144354061-fc948fe1-e66d-489a-b540-ea46305cba26.JPG" width="1000">
+<img alt="supplies" src="https://user-images.githubusercontent.com/1174029/144354061-fc948fe1-e66d-489a-b540-ea46305cba26.JPG" width="900">
 
 ## Materials
 - [C3 Christmas Lights](https://smile.amazon.com/gp/product/B07G742KHQ)
@@ -50,8 +50,8 @@ This project mainly consists of three separate parts: laser engraving the alphab
 ### Step 1: Create Binary Image
 In order to do the laser engraving, we need to provide a black/white image to the Epilog laser software. Since I only want to engrave the alphabet paint strokes, they must be segmented from the rest of the wall (remove the Christmas lights, wallpaper, etc.) in the source image. I used Gimp and Adobe Illustrator image editing tools to adjust the threshold levels and erase any unwanted artifacts. Then I resized the binary image to fit my 12" x 24" canvas.
 
-<img alt="wall_from_show" src="https://user-images.githubusercontent.com/1174029/144355141-9549f3a1-f3ae-4618-997d-a9257df9c37a.png" width="1000">
-<img alt="stranger_things_wall_12x24" src="https://user-images.githubusercontent.com/1174029/144355174-6eaa01c5-e9fe-4e6d-91ba-6f44241f0b2d.png" width="1000">
+<img alt="wall_from_show" src="https://user-images.githubusercontent.com/1174029/144355141-9549f3a1-f3ae-4618-997d-a9257df9c37a.png" width="900">
+<img alt="stranger_things_wall_12x24" src="https://user-images.githubusercontent.com/1174029/144355174-6eaa01c5-e9fe-4e6d-91ba-6f44241f0b2d.png" width="900">
 
 \**Note: the 'Z' character was originally omitted in my source image, which is why it doesn't quite match up...*
 
@@ -78,7 +78,7 @@ Fill in the engraved letters with black paint. Be careful not to drip any extra 
 In order to illuminate one light bulb at a time, the light strand needs to use addressable LEDs. I found small C3-sized Christmas lights on Amazon, but they were not addressable... so I decided to retrofit the bulbs with small NeoPixel RGB LEDs. These LEDs are addressable and very popular among electronics hobbyists. Each LED would need to be daisy-chained with three wires to provide 3V, ground, and a data signal. Knowing this, I designed small breakout printed circuit boards that could support the C3 bulb and connect each LED to the daisy-chain with wires. The breakout board PCB was designed in Altium and fabricated by OSH Park for ~$0.10/board.
 
 <img alt="oshpark_top" src="https://user-images.githubusercontent.com/1174029/144363480-a4315248-3df3-442f-9236-60ed5d836052.png" width="200"><img alt="oshpark_bottom" src="https://user-images.githubusercontent.com/1174029/144363478-235aaebc-cd5a-4edf-88a9-6e7d3e483fe0.png" width="200">
-<img alt="breakout_boards" src="https://user-images.githubusercontent.com/1174029/144363537-aa680d75-93f9-496d-a9a8-fccf468c5e57.JPG" width="1000">
+<img alt="breakout_boards" src="https://user-images.githubusercontent.com/1174029/144363537-aa680d75-93f9-496d-a9a8-fccf468c5e57.JPG" width="900">
 
 ### Step 2: Assemble Breakout Boards
 These LEDs and breakout boards are quite small at ~7x7 mm. Instead of soldering the heat-sensitive parts by hand, I decided to use solder paste and an electric skillet (the poor man's reflow oven). I found it helpful to use a microscope and stencil to apply the paste to the pads, then use tweezers to carefully place the LED. I didn't bother with soldering the decoupling capacitor in order to allow more space for mounting the light bulb.
@@ -88,7 +88,7 @@ These LEDs and breakout boards are quite small at ~7x7 mm. Instead of soldering 
 
 Repeate this process at least 26 times...
 
-<img alt="breakout_solder_paste_repeat" src="https://user-images.githubusercontent.com/1174029/144365170-f315eb2d-36ce-40e5-8585-8d903ceb7f1e.JPG" width="1000">
+<img alt="breakout_solder_paste_repeat" src="https://user-images.githubusercontent.com/1174029/144365170-f315eb2d-36ce-40e5-8585-8d903ceb7f1e.JPG" width="900">
 
 After all the boards are populated, place them on the electric skillet. Cover and turn up the heat. Try to follow the reflow profile for the LEDs, but ultimately keep an eye on the solder paste and watch when it gets hot enough to make a solid joint. I like using low-temp solder paste for this.
 
@@ -98,7 +98,7 @@ After all the boards are populated, place them on the electric skillet. Cover an
 ### Step 3: Wire Up
 The next step is to add wires to connect each LED breakout board together. These addressable LEDs work in a daisy-chain configuration with 3 input signals (VDD, GND, DIN) and 3 output signals (VDD, GND, DOUT). To keep track of the signals, I color-coded the wires using a standard convention of VDD=red, GND=black, DATA=white. I selected solid core 22 AWG gauge wire because it is easy to solder to through-hole pads and the wire itself holds its shape when bent.
 
-<img alt="wire_measure" src="https://user-images.githubusercontent.com/1174029/144547162-ae63bbd9-e4f6-49f3-b6bf-f464ae1a3ccb.JPG" width="1000">
+<img alt="wire_measure" src="https://user-images.githubusercontent.com/1174029/144547162-ae63bbd9-e4f6-49f3-b6bf-f464ae1a3ccb.JPG" width="900">
 
 Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Chrismas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to effectively make extension cables.
 
@@ -107,7 +107,7 @@ Careful planning must be done to measure the wires between each LED. You must ac
 
 I also added heat shrink tubing between each LED to make it look like a single black cable, matching how Christmas lights normally look. Cut to size and make sure to add these measured strips of heat shrink before soldering the next breakout board in the chain. After soldering the neighboring wires, use hot air or a lighter flame to activate the heat shrink tubing.
 
-<img alt="wire_heat_shrink" src="https://user-images.githubusercontent.com/1174029/144547192-6e8ee3f6-a3e0-4eb3-a80e-f9c7d2a58366.JPG" width="1000">
+<img alt="wire_heat_shrink" src="https://user-images.githubusercontent.com/1174029/144547192-6e8ee3f6-a3e0-4eb3-a80e-f9c7d2a58366.JPG" width="900">
 
 
 ### Step 4: Mount Christmas Light Bulbs
@@ -122,7 +122,7 @@ The C3 Christmas lights that I bought didn't have easily removable plastic bulbs
 
 After mounting the bulbs, test the light strand again to see how the bulbs look when illuminated.
 
-<img alt="wire_test_bulbs" src="https://user-images.githubusercontent.com/1174029/144547443-7a2f0b39-fe1b-4538-9838-91a9135eb5aa.JPG" width="1000">
+<img alt="wire_test_bulbs" src="https://user-images.githubusercontent.com/1174029/144547443-7a2f0b39-fe1b-4538-9838-91a9135eb5aa.JPG" width="900">
 
 
 ## Software
@@ -278,17 +278,17 @@ void stranger_things_easter_egg_1(void) {
 ### Step 1: Glue Christmas Lights
 Position the Christmas lights strands against the wallpaper plywood to align with the letters and match the configuration of the real Stranger Things wall. Use super glue for a more secure and permanent bond.
 
-<img alt="assembly_glue" src="https://user-images.githubusercontent.com/1174029/144567320-39fe976a-a276-41ac-8043-37e3532b1237.JPG" width="1000">
+<img alt="assembly_glue" src="https://user-images.githubusercontent.com/1174029/144567320-39fe976a-a276-41ac-8043-37e3532b1237.JPG" width="900">
 
 ### Step 2: Insert Into Frame
 Fold the wires around to the backside of the plywood and insert into the frame. Secure with the frame tabs and clear room for any wall-mounting hardware.
 
-<img alt="assembled_lights_off" src="https://user-images.githubusercontent.com/1174029/144567691-84be48a6-fddf-45f1-9fe3-4731ded8443b.JPG" width="1000">
+<img alt="assembled_lights_off" src="https://user-images.githubusercontent.com/1174029/144567691-84be48a6-fddf-45f1-9fe3-4731ded8443b.JPG" width="900">
 
 ### Step 3: Connect Electronics
 Connect the light strands together with the extension cables and plug it into the electronics board. Connect the battery or power the board via USB cable.
 
-<img alt="assembled_back" src="https://user-images.githubusercontent.com/1174029/144567552-d4403e16-796e-43f7-94dd-b6bf2150a153.JPG" width="1000">
+<img alt="assembled_back" src="https://user-images.githubusercontent.com/1174029/144567552-d4403e16-796e-43f7-94dd-b6bf2150a153.JPG" width="900">
 
 ### Step 4: Send a Message
 Launch the mobile app and establish a Bluetooth connection. Then use the various tab options to send a message.
@@ -310,7 +310,7 @@ I was compelled to build this project because I felt that it was a gift that onl
 
 I also added a nameplate with a custom message on the back of the frame. The nameplate itself was a small sheet of anodized aluminum, which could easily be engraved by the laser. It turned out great.
 
-<img alt="assembled_nameplate" src="https://user-images.githubusercontent.com/1174029/144576497-d1bccc01-a519-4e7b-bc11-1093250e2310.JPG" width="1000">
+<img alt="assembled_nameplate" src="https://user-images.githubusercontent.com/1174029/144576497-d1bccc01-a519-4e7b-bc11-1093250e2310.JPG" width="900">
 
 - [Laser Engraved Nameplate](https://youtu.be/YgBGavpdD-0)
 
