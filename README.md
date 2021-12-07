@@ -10,7 +10,7 @@ Check out [this video clip](https://youtu.be/jIQ9z2bxXyg?t=145) for a reference 
 
 Many other makers have already built versions of this Stranger Things wall with some neat and creative features (e.g. [SparkFun's live Twitter wall](https://youtu.be/ZkAxEGFXsic)), but none of them really looked very accurate to the show... I wanted my replica to mimic the creepy aesthetic and be used as a "wall" art piece, so I incorporated a laser to engrave the exact paint strokes. 
 
-The finished product was given as a gift to my friend, Regina. It featured addressable LEDs, a battery-powered Bluetooth microcontroller, and could be controlled by a companion mobile application to display messages. 
+The finished product was given as a gift to my friend, Regina. It featured addressable LEDs, a battery-powered Bluetooth microcontroller, and a companion mobile application that could be used to display messages remotely.
 
 
 # Supplies
@@ -31,10 +31,9 @@ The finished product was given as a gift to my friend, Regina. It featured addre
 
 ## Tools
 - Epilog Mini 24 60W Laser (courtesy of Harris County Public Library)
-- Soldering iron with hot air rework station
-- Solder wire and solder paste
-- Tweezers
-- Electric skillet
+- Soldering iron with hot air rework station; electric skillet
+- Solder wire and [solder paste](https://smile.amazon.com/Smooth-Solder-Paste-Bi57-6-Syringe/dp/B08KWM5VPY)
+- Fine point tweezers
 - Wire stripper/cutter
 - Hot glue gun
 - Glue stick
@@ -45,46 +44,44 @@ The finished product was given as a gift to my friend, Regina. It featured addre
 
 
 # Build Process
-This project mainly consists of three separate parts: laser engraving the alphabet, constructing a custom Christmas lights strand, and writing the control software. The most tedious part was definitely the lights strand because it was all done manually by hand... and there are 26 letters. But I'm pretty proud with how it all turned out.
+This project mainly consists of three separate parts: laser engraving the alphabet, constructing a custom Christmas lights strand, and writing the control software. The most tedious part was definitely the lights strand because it was all done manually by hand... and there are 26 letters in the English alphabet. But I'm pretty proud with how it all turned out.
 
 ## Laser Alphabet
 ### Step 1: Create Binary Image
-In order to do the laser engraving, we need to provide a black/white image to the Epilog laser software. Since I only want to engrave the alphabet paint strokes, they must be segmented from the rest of the wall (Christmas lights, wallpaper, etc.) in the source image. I used Gimp and Adobe Illustrator image editing tools to adjust the threshold levels and erase any unwanted artifacts. Then I resized the binary image to fit my 12" x 24" canvas.
+In order to do the laser engraving, we need to provide a black/white image to the Epilog laser software. Since I only want to engrave the alphabet paint strokes, they must be segmented from the rest of the wall (remove the Christmas lights, wallpaper, etc.) in the source image. I used Gimp and Adobe Illustrator image editing tools to adjust the threshold levels and erase any unwanted artifacts. Then I resized the binary image to fit my 12" x 24" canvas.
 
 <img alt="wall_from_show" src="https://user-images.githubusercontent.com/1174029/144355141-9549f3a1-f3ae-4618-997d-a9257df9c37a.png" width="1000">
 <img alt="stranger_things_wall_12x24" src="https://user-images.githubusercontent.com/1174029/144355174-6eaa01c5-e9fe-4e6d-91ba-6f44241f0b2d.png" width="1000">
-_Note: the 'Z' character was originally omitted in my source image, which is why it doesn't quite match up..._
+
+\**Note: the 'Z' character was originally omitted in my source image, which is why it doesn't quite match up...*
 
 ### Step 2: Prepare Canvas
 Next, prepare the canvas by glueing wallpaper to the plywood. I used a glue stick and wallpaper samples that had a similar floral design as the one from the show.
 
-<img alt="wallpaper_plywood" src="https://user-images.githubusercontent.com/1174029/144361759-4bdf11ba-9a60-4ef7-a2f2-298d816305fd.JPG" width="1000">
-<img alt="wallpaper_plywood_glued" src="https://user-images.githubusercontent.com/1174029/144359100-5434d9df-c20c-4e49-bd60-042c01dd4292.JPG" width="1000">
+<img alt="wallpaper_plywood" src="https://user-images.githubusercontent.com/1174029/144361759-4bdf11ba-9a60-4ef7-a2f2-298d816305fd.JPG" width="450"><img alt="wallpaper_plywood_glued" src="https://user-images.githubusercontent.com/1174029/144359100-5434d9df-c20c-4e49-bd60-042c01dd4292.JPG" width="450">
 
 ### Step 3: Laser Engraving
-Make sure to test your laser engraving settings on a piece of scrap plywood first! You'll want to dial in the speed/power settings to etch through the paper and a layer of plywood, but not burn it! I did not do this and got burn marks on my expensive wallpaper... so I had to start over using 2 sheets of 12"x12" decorative paper. Also, make sure the canvas is properly aligned on the bed. Then, just let the laser do the work!
+Make sure to test your laser engraving settings on a piece of scrap plywood first! You'll want to dial in the speed/power settings to etch through the paper and a layer of plywood, but not burn it! I did not do this and got burn marks on my expensive wallpaper... so I had to start over using two sheets of 12"x12" decorative paper. Also, make sure the canvas is properly aligned on the bed. Then, just let the laser do the work!
 
-Unfortunately, I did not have the foresight to record a video of the laser engraving.
+Unfortunately, I did not have the foresight to record a video of the laser engraving. But here is an image of the laser I used and the finished engraving job. I think it took about 45 minutes to finish.
 
-<img alt="laser" src="https://user-images.githubusercontent.com/1174029/144571166-d778d2d4-8883-4915-b52a-b783ca9c6e78.jpg" width="1000">
-<img alt="wallpaper_engrave" src="https://user-images.githubusercontent.com/1174029/144360150-4fc4c89c-ab6e-4679-9abf-62990722078a.JPG" width="1000">
+<img alt="laser" src="https://user-images.githubusercontent.com/1174029/144571166-d778d2d4-8883-4915-b52a-b783ca9c6e78.jpg" width="450"><img alt="wallpaper_engrave" src="https://user-images.githubusercontent.com/1174029/144360150-4fc4c89c-ab6e-4679-9abf-62990722078a.JPG" width="450">
 
 ### Step 4: Paint the Letters
 Fill in the engraved letters with black paint. Be careful not to drip any extra paint marks. I also found it helpful to use a black ink pen to touch up the narrow regions in the wood. 
 
-<img alt="wallpaper_paint" src="https://user-images.githubusercontent.com/1174029/144360478-1b1536e9-b6ec-4667-86e8-f1909f7566e5.JPG" width="1000">
-<img alt="wallpaper_paint_fill" src="https://user-images.githubusercontent.com/1174029/144360471-b4842591-c69e-4a59-a4fa-5a8687cabcc8.JPG" width="1000">
+<img alt="wallpaper_paint" src="https://user-images.githubusercontent.com/1174029/144360478-1b1536e9-b6ec-4667-86e8-f1909f7566e5.JPG" width="450"><img alt="wallpaper_paint_fill" src="https://user-images.githubusercontent.com/1174029/144360471-b4842591-c69e-4a59-a4fa-5a8687cabcc8.JPG" width="450">
 
 
 ## Christmas Lights
 ### Step 1: Select LEDs and Design Breakout Boards
-In order to illuminate one light bulb at a time, the light strand needs to use addressable LEDs. I found small C3-sized Christmas lights on Amazon, but they were not addressable... so I decided to retrofit the bulbs with small NeoPixel RGB LEDs. These LEDs are addressable and very popular among electronics hobbyists. Each LED would need to be daisy-chained with 3 wires to provide 3V, ground, and a data signal. Knowing this, I designed small breakout printed circuit boards that could support the C3 bulb and connect each LED to the daisy-chain with wires. The breakout board PCB was designed in Altium and fabricated by OSH Park.
+In order to illuminate one light bulb at a time, the light strand needs to use addressable LEDs. I found small C3-sized Christmas lights on Amazon, but they were not addressable... so I decided to retrofit the bulbs with small NeoPixel RGB LEDs. These LEDs are addressable and very popular among electronics hobbyists. Each LED would need to be daisy-chained with three wires to provide 3V, ground, and a data signal. Knowing this, I designed small breakout printed circuit boards that could support the C3 bulb and connect each LED to the daisy-chain with wires. The breakout board PCB was designed in Altium and fabricated by OSH Park for ~$0.10/board.
 
 <img alt="oshpark_top" src="https://user-images.githubusercontent.com/1174029/144363480-a4315248-3df3-442f-9236-60ed5d836052.png" width="200"><img alt="oshpark_bottom" src="https://user-images.githubusercontent.com/1174029/144363478-235aaebc-cd5a-4edf-88a9-6e7d3e483fe0.png" width="200">
 <img alt="breakout_boards" src="https://user-images.githubusercontent.com/1174029/144363537-aa680d75-93f9-496d-a9a8-fccf468c5e57.JPG" width="1000">
 
 ### Step 2: Assemble Breakout Boards
-These LEDs and breakout boards are quite small. Instead of soldering the heat-sensitive parts by hand, I decided to use solder paste and an electric skillet (the poor man's reflow oven). I found it helpful to use a microscope and stencil to apply the paste to the pads, then use tweezers to carefully place the LED. I didn't bother with soldering the decoupling capacitor to allow more space for mounting the light bulb.
+These LEDs and breakout boards are quite small at ~7x7 mm. Instead of soldering the heat-sensitive parts by hand, I decided to use solder paste and an electric skillet (the poor man's reflow oven). I found it helpful to use a microscope and stencil to apply the paste to the pads, then use tweezers to carefully place the LED. I didn't bother with soldering the decoupling capacitor in order to allow more space for mounting the light bulb.
 
 <img alt="breakout_board" src="https://user-images.githubusercontent.com/1174029/144365111-db85b88e-0379-465f-bb17-ed6cef285b37.JPG" width="450"><img alt="breakout_stencil" src="https://user-images.githubusercontent.com/1174029/144365177-1bcdf8dd-55a5-400d-88b7-8fbf2f947bca.JPG" width="450">
 <img alt="breakout_solder_paste" src="https://user-images.githubusercontent.com/1174029/144365174-aa02af1c-7593-46cb-ad16-deb7dc90debe.JPG" width="450"><img alt="breakout_led_placement" src="https://user-images.githubusercontent.com/1174029/144365162-a9ee8354-3b9b-4c4a-ba5a-a6c97576a11b.JPG" width="450">
@@ -95,12 +92,11 @@ Repeate this process at least 26 times...
 
 After all the boards are populated, place them on the electric skillet. Cover and turn up the heat. Try to follow the reflow profile for the LEDs, but ultimately keep an eye on the solder paste and watch when it gets hot enough to make a solid joint. I like using low-temp solder paste for this.
 
-<img alt="breakout_skillet" src="https://user-images.githubusercontent.com/1174029/144365165-8e818b87-efb7-4901-8de0-61ff2de42c04.JPG" width="1000">
-<img alt="breakout_assembled" src="https://user-images.githubusercontent.com/1174029/144365157-9f174783-e5ce-4cfd-8a9e-fcc327bdf2c4.JPG" width="1000">
+<img alt="breakout_skillet" src="https://user-images.githubusercontent.com/1174029/144365165-8e818b87-efb7-4901-8de0-61ff2de42c04.JPG" width="450"><img alt="breakout_assembled" src="https://user-images.githubusercontent.com/1174029/144365157-9f174783-e5ce-4cfd-8a9e-fcc327bdf2c4.JPG" width="450">
 
 
 ### Step 3: Wire Up
-The next step is to add wires to connect each LED breakout board together. These addressable LEDs work in a daisy-chain configuration with 3 input signals (VDD, GND, DIN) and 3 output signals (VDD, GND, DOUT). To keep track of the signals, I color-coded the wires using the standard convention of VDD=red, GND=black, DATA=white. I selected solid core 22 AWG gauge wire because it is easy to solder to through-hole pads and the wire itself holds its shape when bent.
+The next step is to add wires to connect each LED breakout board together. These addressable LEDs work in a daisy-chain configuration with 3 input signals (VDD, GND, DIN) and 3 output signals (VDD, GND, DOUT). To keep track of the signals, I color-coded the wires using a standard convention of VDD=red, GND=black, DATA=white. I selected solid core 22 AWG gauge wire because it is easy to solder to through-hole pads and the wire itself holds its shape when bent.
 
 <img alt="wire_measure" src="https://user-images.githubusercontent.com/1174029/144547162-ae63bbd9-e4f6-49f3-b6bf-f464ae1a3ccb.JPG" width="1000">
 
@@ -109,7 +105,7 @@ Careful planning must be done to measure the wires between each LED. You must ac
 <img alt="wire_led_top_" src="https://user-images.githubusercontent.com/1174029/144566073-920d9c65-9f9f-4f60-8878-3ee49b681949.jpg" width="450"><img alt="wire_led_bottom_" src="https://user-images.githubusercontent.com/1174029/144566070-b8e0c170-fb4d-4248-894c-240b3f88cb32.jpg" width="450">
 <img alt="wire_header" src="https://user-images.githubusercontent.com/1174029/144566305-a49f3b41-20ea-4314-8d09-04b4248ed329.jpg" width="450">
 
-I also added heat shrink tubing between each LED to make it look like a single black cable, matching how Christmas lights normally look. After soldering the wires to the breakout boards, use hot air to activate the heat shrink tubing.
+I also added heat shrink tubing between each LED to make it look like a single black cable, matching how Christmas lights normally look. Cut to size and make sure to add these measured strips of heat shrink before soldering the next breakout board in the chain. After soldering the neighboring wires, use hot air or a lighter flame to activate the heat shrink tubing.
 
 <img alt="wire_heat_shrink" src="https://user-images.githubusercontent.com/1174029/144547192-6e8ee3f6-a3e0-4eb3-a80e-f9c7d2a58366.JPG" width="1000">
 
@@ -117,10 +113,9 @@ I also added heat shrink tubing between each LED to make it look like a single b
 ### Step 4: Mount Christmas Light Bulbs
 As you are adding new LEDs to the daisy-chain, it is good practice to test that the LEDs are functional and in the correct position. An easy way to check this is by connecting the strand to an Arduino and using Adafruit's NeoPixel library strandtest example to illuminate the LEDs. Once all of the LEDs have been verified to work, you are ready to mount the Christmas light bulbs to the breakout boards.
 
-<img alt="wire_measure_lights" src="https://user-images.githubusercontent.com/1174029/144547441-e8a8ee6f-bc4c-4261-acbf-736b13f2a920.JPG" width="1000">
-<img alt="wire_test_lights" src="https://user-images.githubusercontent.com/1174029/144547445-4c6afa35-6ec0-4671-a944-afa52aea63f4.JPG" width="1000">
+<img alt="wire_measure_lights" src="https://user-images.githubusercontent.com/1174029/144547441-e8a8ee6f-bc4c-4261-acbf-736b13f2a920.JPG" width="450"><img alt="wire_test_lights" src="https://user-images.githubusercontent.com/1174029/144547445-4c6afa35-6ec0-4671-a944-afa52aea63f4.JPG" width="450">
 
-The C3 Christmas lights that I bought didn't have easily removable plastic bulbs. I needed to pry them off and use a cutter to carefully expose a large enough hole at the bulb base for the LED to shine through. Without cutting the plastic base, the LED would not properly diffuse light inside the bulb; it needed to be flush to maximize light throw. Once 26 bulbs were removed, I arranged them in a color order to avoid any same-color neighbors. Using a hot glue gun, add a dab of hot glue on top of the LED and quickly apply the plastic bulb to the breakout board. Hold together for a few seconds for the surfaces to bond. The hot glue acts as an adhesive, but also works to diffuse light inside the bulb. Repeat this glueing process for all remaining LEDs, also using super glue if a stronger bond is needed. Pay attention to the orientation of each bulb, as some need to point at different angles.
+The C3 Christmas lights that I bought didn't have easily removable plastic bulbs. I needed to pry them off and use a cutter to carefully expose a large enough hole at the bulb base for the LED to shine through. Without cutting the plastic base, the LED would not properly diffuse light inside of the bulb; it needed to be flush to maximize light throw. Once 26 bulbs were removed, I arranged them in a color order to avoid any same-color neighbors. Using a hot glue gun, add a dab of hot glue on top of the LED and quickly apply the plastic bulb to the breakout board. Hold together for a few seconds for the surfaces to bond. The hot glue acts as an adhesive, but also works to diffuse light inside the bulb. Repeat this glueing process for all remaining LEDs, also using super glue if a stronger bond is needed. Pay attention to the orientation of each bulb, as some need to point at different angles.
 
 <img alt="bulb_remove" src="https://user-images.githubusercontent.com/1174029/144566530-f1fa36bd-8374-4ae7-8e15-33a8ebb8dba1.jpg" width="450"><img alt="bulb_extract" src="https://user-images.githubusercontent.com/1174029/144566529-936ec566-9f09-4bc6-acf0-78c88d298035.jpg" width="450">
 <img alt="wire_glue_bulbs" src="https://user-images.githubusercontent.com/1174029/144547438-5718d957-8050-4190-9397-c5f66aeda50e.JPG" width="450"><img alt="wire_measure_bulbs" src="https://user-images.githubusercontent.com/1174029/144547439-8bd377bc-e796-4e76-8418-f0fc825b8845.JPG" width="450">
@@ -131,7 +126,7 @@ After mounting the bulbs, test the light strand again to see how the bulbs look 
 
 
 ## Software
-The control software consists of microcontroller firmware to drive the LEDs and respond to Bluetooth commands from a mobile application. I used custom-built electronics from a previous project because it already contained the necessary components to power several LEDs with a Lithium-polymer battery. This custom board used a Nordic nRF52832 BLE System-on-Chip, which could easily connect to any Android or Apple smartphone device. The software is fairly straightforward... so any dev board like Arduino, Raspberry Pi, ESP32, or XIAO should also work fine.
+The control software consists of microcontroller firmware to drive the LEDs and respond to Bluetooth commands from a companion mobile application. I used custom-built electronics from a previous project because it already contained the necessary components to power several LEDs with a Lithium-polymer battery. This custom board used a Nordic nRF52832 BLE System-on-Chip, which could easily connect to any Android or Apple smartphone device. The software is fairly straightforward... so any dev board like Arduino, Raspberry Pi, ESP32, or XIAO should also work fine. Just make sure it can adequately drive and control 26 LEDs.
 
 ### Step 1: Alphabet-LED Protocol
 Once you are able to turn on/off a specific LED in the daisy-chain, you just need to translate the text characters into light commands. To do this, I leveraged the ASCII standard, which already represents each character with a unique number (shown below in decimal and hex). Note that a space character is represented by 0x20, and upper- and lowercase A-z letters use different values. The leftmost column represets the LED index value in the Christmas lights daisy-chain.
@@ -166,7 +161,7 @@ Once you are able to turn on/off a specific LED in the daisy-chain, you just nee
 | 24 |    Y, y   |     89    |    0x59   |    121    |    0x79   |
 | 25 |    Z, z   |     90    |    0x5A   |    122    |    0x80   |
 
-When the firmware receives a message command on the NUS Bluetooth service, it wall call the `abc_display_char()` function to display that character's LED. The `abc_display_char()` function takes an input character, calculates the corresponding LED index, and turns that LED on for a certain duration (`g_char_duration_ms`)—then turns the LED off in preparation for displaying the next LED/letter.
+When the firmware receives a message command on the NUS Bluetooth service, it will call the `abc_display_char()` function to display that character's LED. The `abc_display_char()` function takes an input character, calculates the corresponding LED index, and turns that LED on for a certain duration (`g_char_duration_ms`)—then turns the LED off in preparation for displaying the next LED/letter (`g_inter_char_duration_ms`).
 
 ``` c
 // In Nordic UART Service Handler...
@@ -230,7 +225,7 @@ uint16_t space_duration;      // 'Space' character duration (ms)
 ```
 
 ### Step 2: User Interface
-Apologies for the user interface design... I didn't spend much time on it so it is purely functional (not pretty). The app has four main sections that are accessible via the bottom tabs. _Wall_ lets you interact with the alphabet lights in real-time; pressing a letter in the app will illuminate the corresponding letter in the frame. _Message_ lets you input a text string to display letter-by-letter like in the show. The function iterates over the character array and activates the corresponding LED in sequence. Try sending something like "hello world". _Light Patterns_ contains some easter eggs to recreate the messages from the show ("right here", "run") and some other fun things like a yes/no Magic 8 Ball. _Settings_ gives you full control to monitor the battery level and adjust the timing and LED color/brightness settings. Using max brightness white is easiest because the light bulbs are already colored.
+Apologies for the user interface design... I didn't spend much time on it so it is purely functional (not pretty). The app has four main sections that are accessible via the bottom tabs. _Wall_ lets you interact with the alphabet lights in real-time; pressing a letter in the app will illuminate the corresponding letter in the frame. _Message_ lets you input a text string to display letter-by-letter like in the television show. The function iterates over the character array and activates the corresponding LED in a timed sequence. _Light Patterns_ contains some easter eggs to recreate the messages from the show ("right here", "run") and some other fun things like a random yes/no Magic 8 Ball. _Settings_ gives you full control to monitor the battery level and adjust the timing and LED color/brightness settings. Using max brightness white is easiest because the light bulbs are already tinted.
 
 - [App Demo with Test Lights](https://youtu.be/60Hty-S8RYM)
 
@@ -255,7 +250,7 @@ actions.sendWallMessage(CONNECTED_PERIPHERAL.id, this.state.text)
 ```
 
 ### Step 3: Easter Eggs
-The firmware also includes a few easter egg references from the Stranger Things show. Calling these commands will also display a colorful blinking light show at the end to mimic the "RUN" scene. 
+The firmware also includes a few easter egg references from the Stranger Things show. Calling these commands will also display a colorful blinking light sequence at the end to mimic the "RUN" scene from the television show. 
 
 ``` c
 void stranger_things_easter_egg_0(void) {
@@ -286,7 +281,7 @@ Position the Christmas lights strands against the wallpaper plywood to align wit
 <img alt="assembly_glue" src="https://user-images.githubusercontent.com/1174029/144567320-39fe976a-a276-41ac-8043-37e3532b1237.JPG" width="1000">
 
 ### Step 2: Insert Into Frame
-Fold the wires around to the backside of the plywood and insert the piece into the frame. Secure with the frame tabs and clear room for any wall-mounting hardware.
+Fold the wires around to the backside of the plywood and insert into the frame. Secure with the frame tabs and clear room for any wall-mounting hardware.
 
 <img alt="assembled_lights_off" src="https://user-images.githubusercontent.com/1174029/144567691-84be48a6-fddf-45f1-9fe3-4731ded8443b.JPG" width="1000">
 
@@ -297,18 +292,21 @@ Connect the light strands together with the extension cables and plug it into th
 
 ### Step 4: Send a Message
 Launch the mobile app and establish a Bluetooth connection. Then use the various tab options to send a message.
+
+#### Examples:
 - ["hello world"](https://youtu.be/1JN2lHtpktk)
 - ["RUN"](https://youtu.be/DlZCyXovSxo)
 - ["David"](https://youtu.be/lXHU-I2KuCw)
 
 
 # Gifting
-The primary motivation for this project was to be a gift for my friend and coworker, Regina. A few months prior, she had a hemorrhagic stroke that required multiple brain surgeries. She experienced paralysis on the right side of her body and had some difficulty speaking. We were both fans of the Stranger Things show and joked that she resembled one of the main characters (Eleven) with her shaved head and slow speech. I had previously worked on a project with her that utilized electronics and a mobile app to control addressable LEDs, so the inner workings were already familiar to me. In fact, I was able to use the same hardware for both projects. I felt that it was a gift that only I could give, so I was compelled to do so. I'm happy to report that she is doing well now, continuing her recovery.
+The primary motivation for this project was to be a gift for my friend and coworker, Regina. A few months prior, she had a hemorrhage that required multiple brain surgeries. She experienced paralysis on the right side of her body and had some difficulty speaking. We were both fans of the Stranger Things show and joked that she resembled one of the main characters (Eleven) with her shaved head and slow speech. I had previously worked on a project with her that utilized electronics and a mobile app to control addressable LEDs, so the inner workings were already familiar to me. In fact, I was able to use old prototype hardware.
 
-<img alt="gift_regina_hospital" src="https://user-images.githubusercontent.com/1174029/144576600-c6c321bc-295f-44b1-ac52-aa0699d5bde3.jpg" width="1000">
-<img alt="" src="" width="1000">
+I was compelled to build this project because I felt that it was a gift that only I could give—and if I didn't, she would never receive something so special. I'm happy to report that she is doing well 2 years later, continuing her recovery with the best of spirits and brightest of smiles.
 
-- [Unboxing](https://youtu.be/BQxKGPLLM7Q)
+<img alt="gift_regina_hospital" src="https://user-images.githubusercontent.com/1174029/144576600-c6c321bc-295f-44b1-ac52-aa0699d5bde3.jpg" width="450"><img alt="gift_regina_update" src="https://user-images.githubusercontent.com/1174029/144948484-fea9a3bc-bdd8-4af8-8669-b76127e65f7b.jpg" width="450">
+
+- [Regina's Unboxing](https://youtu.be/BQxKGPLLM7Q)
 
 I also added a nameplate with a custom message on the back of the frame. The nameplate itself was a small sheet of anodized aluminum, which could easily be engraved by the laser. It turned out great.
 
