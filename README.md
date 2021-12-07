@@ -86,7 +86,7 @@ These LEDs and breakout boards are quite small at ~7x7 mm. Instead of soldering 
 <img alt="breakout_board" src="https://user-images.githubusercontent.com/1174029/144365111-db85b88e-0379-465f-bb17-ed6cef285b37.JPG" width="450"><img alt="breakout_stencil" src="https://user-images.githubusercontent.com/1174029/144365177-1bcdf8dd-55a5-400d-88b7-8fbf2f947bca.JPG" width="450">
 <img alt="breakout_solder_paste" src="https://user-images.githubusercontent.com/1174029/144365174-aa02af1c-7593-46cb-ad16-deb7dc90debe.JPG" width="450"><img alt="breakout_led_placement" src="https://user-images.githubusercontent.com/1174029/144365162-a9ee8354-3b9b-4c4a-ba5a-a6c97576a11b.JPG" width="450">
 
-Repeate this process at least 26 times...
+Repeat this process at least 26 times...
 
 <img alt="breakout_solder_paste_repeat" src="https://user-images.githubusercontent.com/1174029/144365170-f315eb2d-36ce-40e5-8585-8d903ceb7f1e.JPG" width="900">
 
@@ -100,7 +100,7 @@ The next step is to add wires to connect each LED breakout board together. These
 
 <img alt="wire_measure" src="https://user-images.githubusercontent.com/1174029/144547162-ae63bbd9-e4f6-49f3-b6bf-f464ae1a3ccb.JPG" width="900">
 
-Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Chrismas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to effectively make extension cables.
+Careful planning must be done to measure the wires between each LED. You must account for the space between the letters, but also leave room for wire stripping and soldering. It was helpful to use a measuring tape and a wire stripper/cutter for this task. To make it easier to mount the Christmas lights to the plywood, I decided to split the lights into three separate strands, one for each row of letters. This makes it look cleaner from the front, while the daisy-chain connection is managed in the back behind the frame. For this, I used 0.1" male and female header pins to effectively make extension cables.
 
 <img alt="wire_led_top_" src="https://user-images.githubusercontent.com/1174029/144566073-920d9c65-9f9f-4f60-8878-3ee49b681949.jpg" width="450"><img alt="wire_led_bottom_" src="https://user-images.githubusercontent.com/1174029/144566070-b8e0c170-fb4d-4248-894c-240b3f88cb32.jpg" width="450">
 <img alt="wire_header" src="https://user-images.githubusercontent.com/1174029/144566305-a49f3b41-20ea-4314-8d09-04b4248ed329.jpg" width="450">
@@ -129,7 +129,7 @@ After mounting the bulbs, test the light strand again to see how the bulbs look 
 The control software consists of microcontroller firmware to drive the LEDs and respond to Bluetooth commands from a companion mobile application. I used custom-built electronics from a previous project because it already contained the necessary components to power several LEDs with a Lithium-polymer battery. This custom board used a Nordic nRF52832 BLE System-on-Chip, which could easily connect to any Android or Apple smartphone device. The software is fairly straightforward... so any dev board like Arduino, Raspberry Pi, ESP32, or XIAO should also work fine. Just make sure it can adequately drive and control 26 LEDs.
 
 ### Step 1: Alphabet-LED Protocol
-Once you are able to turn on/off a specific LED in the daisy-chain, you just need to translate the text characters into light commands. To do this, I leveraged the ASCII standard, which already represents each character with a unique number (shown below in decimal and hex). Note that a space character is represented by 0x20, and upper- and lowercase A-z letters use different values. The leftmost column represets the LED index value in the Christmas lights daisy-chain.
+Once you are able to turn on/off a specific LED in the daisy-chain, you just need to translate the text characters into light commands. To do this, I leveraged the ASCII standard, which already represents each character with a unique number (shown below in decimal and hex). Note that a space character is represented by 0x20, and upper- and lowercase A-z letters use different values. The leftmost column represents the LED index value in the Christmas lights daisy-chain.
 
 |  # | Character | ASCII Dec | ASCII Hex | ASCII Dec | ASCII Hex |
 |:--:|:---------:|:---------:|:---------:|:---------:|:---------:|
@@ -290,7 +290,7 @@ Connect the light strands together with the extension cables and plug it into th
 
 <img alt="assembled_back" src="https://user-images.githubusercontent.com/1174029/144567552-d4403e16-796e-43f7-94dd-b6bf2150a153.JPG" width="900">
 
-### Step 4: Send a Message
+### Step 4: Send A Message
 Launch the mobile app and establish a Bluetooth connection. Then use the various tab options to send a message.
 
 #### Examples:
@@ -319,5 +319,4 @@ I also added a nameplate with a custom message on the back of the frame. The nam
 - https://blog.hackster.io/get-ready-for-season-2-of-stranger-things-with-your-own-alphabet-wall-242b6fe39044
 - https://github.com/sparkfun/Stranger_Things_Wall
 - https://www.instructables.com/id/Stranger-Things-Interactive-Wall-Art/
-- https://www.instructables.com/contest/laser2021/
-
+- https://www.instructables.com/Laser-Engraved-Stranger-Things-Wall/
