@@ -166,7 +166,7 @@ Once you are able to turn on/off a specific LED in the daisy-chain, you just nee
 | 24 |    Y, y   |     89    |    0x59   |    121    |    0x79   |
 | 25 |    Z, z   |     90    |    0x5A   |    122    |    0x80   |
 
-When the firmware receives a message command on the NUS Bluetooth service, it will call the `abc_display_char()` function to display that character's LED. The `abc_display_char()` function takes an input character, calculates the corresponding LED index, and turns that LED on for a certain duration (`g_char_duration_ms`)—then turns the LED off in preparation for displaying the next LED/letter (`g_inter_char_duration_ms`).
+When the firmware receives a message command on the NUS Bluetooth service, it will call the _abc_display_char()_ function to display that character's LED. The _abc_display_char()_ function takes an input character, calculates the corresponding LED index, and turns that LED on for a certain duration (_g_char_duration_ms_)—then turns the LED off in preparation for displaying the next LED/letter (_g_inter_char_duration_ms_).
 
 ``` c
 // In Nordic UART Service Handler...
@@ -234,7 +234,7 @@ Apologies for the user interface design... I didn't spend much time on it so it 
 
 - [App Demo with Test Lights](https://youtu.be/60Hty-S8RYM)
 
-The mobile app was written in Javascript using React Native and the [react-native-ble-manager](https://github.com/innoveit/react-native-ble-manager/) library. Button onPress events can simply use the `sendWallMessage()` function to trigger the lights sequence.
+The mobile app was written in Javascript using React Native and the [react-native-ble-manager](https://github.com/innoveit/react-native-ble-manager/) library. Button onPress events can simply use the _sendWallMessage()_ function to trigger the lights sequence.
 
 ``` js
 export const sendWallMessage = (peripheralId, text) => {
@@ -321,8 +321,8 @@ I also added a nameplate with a custom message on the back of the frame. The nam
 
 
 # Resources
-- https://blog.hackster.io/get-ready-for-season-2-of-stranger-things-with-your-own-alphabet-wall-242b6fe39044
-- https://github.com/sparkfun/Stranger_Things_Wall
-- https://www.instructables.com/id/Stranger-Things-Interactive-Wall-Art/
-- https://www.instructables.com/Laser-Engraved-Stranger-Things-Wall/
+- [https://blog.hackster.io/get-ready-for-season-2-of-stranger-things-with-your-own-alphabet-wall-242b6fe39044](https://blog.hackster.io/get-ready-for-season-2-of-stranger-things-with-your-own-alphabet-wall-242b6fe39044)
+- [https://github.com/sparkfun/Stranger_Things_Wall](https://github.com/sparkfun/Stranger_Things_Wall)
+- [https://www.instructables.com/id/Stranger-Things-Interactive-Wall-Art/](https://www.instructables.com/id/Stranger-Things-Interactive-Wall-Art/)
+- [https://www.instructables.com/Laser-Engraved-Stranger-Things-Wall/](https://www.instructables.com/Laser-Engraved-Stranger-Things-Wall/)
 
